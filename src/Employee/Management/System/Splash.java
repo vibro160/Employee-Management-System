@@ -15,10 +15,12 @@ public class Splash extends JFrame {
 
 
 
+
         setSize(1200,820);
         setLayout(null);
          setLocation(180,0);
         setVisible(true);
+        //logic to turn off the front page after 5 sec
         try {
              Thread.sleep(5000);
             setVisible(false);

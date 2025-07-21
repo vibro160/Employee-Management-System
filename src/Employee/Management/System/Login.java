@@ -1,10 +1,13 @@
 package Employee.Management.System;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.util.Arrays;
 
 public class Login<conn> extends JFrame implements ActionListener {
 
@@ -73,19 +76,25 @@ public class Login<conn> extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-     if (e.getSource()==Login){
+     if (e.getSource() == Login){
          try {
-             String username=user_name.getText();
-             String password=userpassword.getText();
+             String username = user_name.getText();
+            String password = userpassword.getText();
 
-             connection connection=new connection();
 
-             String query="select * from login where usename= ' "+username + "' and password = ' "+password+" '";
-             ResultSet resultSet=connection.statement.executeQuery(query);
+             connection connection =new connection();
+
+             String query= "SELECT * FROM login WHERE username='" + username + "' AND password='" + password + "'"; ;
+             ResultSet resultSet= connection.statement.executeQuery(query);
+
+
           if(resultSet.next()){
               setVisible(false);
-          } else{
-              JOptionPane.showMessageDialog(null,"invalid username or password");
+              new main();
+
+          }
+          else{
+              JOptionPane.showMessageDialog(null,"Invalid username or password");
           }
 
          } catch (Exception E) {

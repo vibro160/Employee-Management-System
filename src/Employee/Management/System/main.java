@@ -51,7 +51,7 @@ public class main extends JFrame {
         remove.setForeground(Color.white);
         remove.setBackground(Color.black);
         img.add(remove);
-        remove.addActionListener(new ActionListener() {
+        remove .addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 

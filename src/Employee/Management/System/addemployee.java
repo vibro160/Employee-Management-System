@@ -174,9 +174,6 @@ public class addemployee  extends JFrame implements ActionListener {
             String mail=email.getText();
             String sal=salary.getText();
 
-
-
-
              try{
                connection c=new connection();
                String query="insert into employee values('"+name+"','"+fname+"','"+DOB+"','"+addres+"','"+phone+"','"+education+"','"+desg+"','"+adhar+"','"+eid+"','"+mail+"','"+sal+"')";
@@ -189,6 +186,12 @@ public class addemployee  extends JFrame implements ActionListener {
              } catch (Exception E) {
                  E.printStackTrace();
              }
+
+
+        }else {
+
+            new main();
+            setVisible(false);
 
         }
     }

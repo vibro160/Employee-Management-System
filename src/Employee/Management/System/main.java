@@ -30,6 +30,8 @@ public class main extends JFrame {
           add.addActionListener(new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
+                  new addemployee();
+                  setVisible(false);
 
               }
           });
@@ -42,7 +44,8 @@ public class main extends JFrame {
         view.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+            new viewemply();
+            setVisible(false);
             }
         });
 

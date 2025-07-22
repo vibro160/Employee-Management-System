@@ -9,6 +9,7 @@ public class addemployee  extends JFrame {
 
     JTextField employeename,fathername,dob,address,phoneno,aadhar,email,salary,designation;
     JDateChooser tdob;
+    JComboBox Boxeducation;
 
 
     addemployee() {
@@ -58,23 +59,25 @@ public class addemployee  extends JFrame {
        tdob.setBackground(new Color(177,252,197));
         add(tdob);
 
-        JLabel addres=new JLabel(" Address ");
-        addres.setBounds(50,300,150,30);
-        addres.setFont(new Font("SAN_SERIF",Font.BOLD,20));
-        add(addres);
-        address=new JTextField();
-        address.setBounds(200,300,150,30);
-        address.setBackground(new Color(177,252,197));
-        add(address);
+
 
         JLabel adhar=new JLabel("Aadhar No:");
-        adhar.setBounds(50,350,150,30);
+        adhar.setBounds(50,300,150,30);
         adhar.setFont(new Font("SAN_SERIF",Font.BOLD,20));
         add(adhar);
         aadhar=new JTextField();
-        aadhar.setBounds(200,350,150,30);
+        aadhar.setBounds(200,300,150,30);
         aadhar.setBackground(new Color(177,252,197));
         add(aadhar);
+
+        JLabel addres=new JLabel(" Address ");
+        addres.setBounds(50,350,150,30);
+        addres.setFont(new Font("SAN_SERIF",Font.BOLD,20));
+        add(addres);
+        address=new JTextField();
+        address.setBounds(200,350,150,30);
+        address.setBackground(new Color(177,252,197));
+        add(address);
 
 
         JLabel sal=new JLabel("Salary:");
@@ -104,7 +107,15 @@ public class addemployee  extends JFrame {
         designation.setBackground(new Color(177,252,197));
         add(designation);
 
-
+        JLabel edu=new JLabel("Highest Education:");
+        edu.setBounds(50,400,200,30);
+        edu.setFont(new Font("SAN_SERIF",Font.BOLD,20));
+        add(edu);
+       String items[]={"BBA","BCA","B.Tech","BA","BSC","B.COM","MBA","MA","MTech","MSC","Phd"};
+       Boxeducation=new JComboBox(items);
+       Boxeducation.setBackground(new Color(177,252,197));
+       Boxeducation.setBounds(250,400,100,30);
+       add(Boxeducation);
         setSize(900, 700);
         setLocation(300, 50);
         setLayout(null);

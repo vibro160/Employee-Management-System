@@ -4,12 +4,19 @@ import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class addemployee  extends JFrame {
-
+    Random ran =new Random();
+    int number= ran.nextInt(999999);
     JTextField employeename,fathername,dob,address,phoneno,aadhar,email,salary,designation;
+    JLabel employeeid;
+
     JDateChooser tdob;
     JComboBox Boxeducation;
+
+    JButton add;
+    JButton back;
 
 
     addemployee() {
@@ -116,6 +123,30 @@ public class addemployee  extends JFrame {
        Boxeducation.setBackground(new Color(177,252,197));
        Boxeducation.setBounds(250,400,100,30);
        add(Boxeducation);
+
+        JLabel eid=new JLabel("Employee ID:");
+        eid.setBounds(50,450,150,30);
+        eid.setFont(new Font("SAN_SERIF",Font.BOLD,20));
+        add(eid);
+        employeeid=new JLabel(""+number);
+        employeeid.setBounds(200,450,150,30);
+        employeeid.setFont(new Font("SAN_SARIF",Font.BOLD,20));
+        employeeid.setForeground(Color.black); //text colour
+        add(employeeid);
+
+        add= new JButton("ADD");
+        add.setBounds(350,550,150,40);
+        add.setBackground(Color.BLACK);
+        add.setForeground(Color.white);
+        add(add);
+
+        back= new JButton("BACK");
+        back.setBounds(350,600,150,40);
+        back.setBackground(Color.BLACK);
+        back.setForeground(Color.white);
+        add(back);
+
+
         setSize(900, 700);
         setLocation(300, 50);
         setLayout(null);

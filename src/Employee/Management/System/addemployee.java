@@ -4,12 +4,14 @@ import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class addemployee  extends JFrame {
+public class addemployee  extends JFrame implements ActionListener {
     Random ran =new Random();
     int number= ran.nextInt(999999);
-    JTextField employeename,fathername,dob,address,phoneno,aadhar,email,salary,designation;
+    JTextField employeename,fathername,address,phoneno,aadhar,email,salary,designation;
     JLabel employeeid;
 
     JDateChooser tdob;
@@ -63,7 +65,7 @@ public class addemployee  extends JFrame {
         add(DOB);
         tdob=new JDateChooser();
         tdob.setBounds(200,250,150,30);
-       tdob.setBackground(new Color(177,252,197));
+        tdob.setBackground(new Color(177,252,197));
         add(tdob);
 
 
@@ -138,6 +140,7 @@ public class addemployee  extends JFrame {
         add.setBounds(350,550,150,40);
         add.setBackground(Color.BLACK);
         add.setForeground(Color.white);
+        add.addActionListener(this);
         add(add);
 
         back= new JButton("BACK");
@@ -155,6 +158,40 @@ public class addemployee  extends JFrame {
 
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==add){
+            String name=employeename.getText();
+            String fname =fathername.getText();
+            String DOB = ((JTextField) tdob.getDateEditor().getUiComponent()).getText();
+
+            String addres=address.getText();
+            String phone=phoneno.getText();
+            String education=(String)Boxeducation.getSelectedItem();
+            String desg=designation.getText();
+            String adhar=aadhar.getText();
+            String  eid=employeeid.getText();
+            String mail=email.getText();
+            String sal=salary.getText();
+
+
+
+
+             try{
+               connection c=new connection();
+               String query="insert into employee values('"+name+"','"+fname+"','"+DOB+"','"+addres+"','"+phone+"','"+education+"','"+desg+"','"+adhar+"','"+eid+"','"+mail+"','"+sal+"')";
+               c.statement.executeUpdate(query);
+               JOptionPane.showMessageDialog(null,"Details added");
+               setVisible(false);
+               new main();
+
+
+             } catch (Exception E) {
+                 E.printStackTrace();
+             }
+
+        }
+    }
 
     public static void main(String[] args) {
 

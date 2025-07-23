@@ -6,22 +6,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
-public class addemployee  extends JFrame implements ActionListener {
-    Random ran =new Random();
-    int number= ran.nextInt(999999);
-    JTextField employeename,fathername,address,phoneno,aadhar,email,salary,designation;
+public class updateemply extends JFrame  implements ActionListener {
+    JTextField teducation,fathername,address,phoneno,taadhar,email,salary,designation;
     JLabel employeeid;
-
-    JDateChooser tdob;
-    JComboBox Boxeducation;
-
     JButton add;
     JButton back;
-
-
-    addemployee() {
+    String number;
+    updateemply(){
 
         getContentPane().setBackground(new Color(163,255,188));
 
@@ -34,7 +26,7 @@ public class addemployee  extends JFrame implements ActionListener {
         name.setBounds(50,150,150,30);
         name.setFont(new Font("SAN_SERIF",Font.BOLD,20));
         add(name);
-        employeename=new JTextField();
+        JLabel employeename=new JLabel();
         employeename.setBounds(200,150,150,30);
         employeename.setBackground(new Color(177,252,197));
         add(employeename);
@@ -43,7 +35,7 @@ public class addemployee  extends JFrame implements ActionListener {
         fname.setBounds(400,150,150,30);
         fname.setFont(new Font("SAN_SERIF",Font.BOLD,20));
         add(fname);
-        fathername=new JTextField();
+        JLabel fathername=new JTextField();
         fathername.setBounds(650,150,150,30);
         fathername.setBackground(new Color(177,252,197));
         add(fathername);
@@ -120,11 +112,11 @@ public class addemployee  extends JFrame implements ActionListener {
         edu.setBounds(50,400,200,30);
         edu.setFont(new Font("SAN_SERIF",Font.BOLD,20));
         add(edu);
-       String items[]={"BBA","BCA","B.Tech","BA","BSC","B.COM","MBA","MA","MTech","MSC","Phd"};
-       Boxeducation=new JComboBox(items);
-       Boxeducation.setBackground(new Color(177,252,197));
-       Boxeducation.setBounds(250,400,100,30);
-       add(Boxeducation);
+        String items[]={"BBA","BCA","B.Tech","BA","BSC","B.COM","MBA","MA","MTech","MSC","Phd"};
+        Boxeducation=new JComboBox(items);
+        Boxeducation.setBackground(new Color(177,252,197));
+        Boxeducation.setBounds(250,400,100,30);
+        add(Boxeducation);
 
         JLabel eid=new JLabel("Employee ID:");
         eid.setBounds(50,450,150,30);
@@ -154,51 +146,15 @@ public class addemployee  extends JFrame implements ActionListener {
         setLocation(300, 50);
         setLayout(null);
         setVisible(true);
-
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==add){
-            String name=employeename.getText();
-            String fname =fathername.getText();
-            String DOB = ((JTextField) tdob.getDateEditor().getUiComponent()).getText();
 
-            String addres=address.getText();
-            String phone=phoneno.getText();
-            String education=(String)Boxeducation.getSelectedItem();
-            String desg=designation.getText();
-            String adhar=aadhar.getText();
-            String  eid=employeeid.getText();
-            String mail=email.getText();
-            String sal=salary.getText();
-
-             try{
-               connection c=new connection();
-               String query="insert into employee values('"+name+"','"+fname+"','"+DOB+"','"+addres+"','"+phone+"','"+education+"','"+desg+"','"+adhar+"','"+eid+"','"+mail+"','"+sal+"')";
-               c.statement.executeUpdate(query);
-               JOptionPane.showMessageDialog(null,"Details added");
-               setVisible(false);
-               new main();
-
-
-             } catch (Exception E) {
-                 E.printStackTrace();
-             }
-
-
-        }else if(e.getSource()==back) {
-
-            new main();
-            setVisible(false);
-
-        }
     }
 
     public static void main(String[] args) {
-
-
-        new addemployee();
+         new updateemply();
     }
+
 }

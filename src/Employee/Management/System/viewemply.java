@@ -108,7 +108,10 @@ public class viewemply  extends JFrame implements ActionListener {
             
         } else if (e.getSource()==update) {
             setVisible(false);
+            new updateemply(choiceemp.getSelectedItem());
              try {
+                 new updateemply(choiceemp.getSelectedItem());
+                 setVisible(false);
 
              } catch (Exception ex) {
                  throw new RuntimeException(ex);

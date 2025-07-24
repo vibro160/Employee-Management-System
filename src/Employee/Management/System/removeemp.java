@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.ResultSet;
 
 public class removeemp extends JFrame implements ActionListener {
@@ -66,13 +68,25 @@ public class removeemp extends JFrame implements ActionListener {
             connection c= new connection();
             ResultSet rs=c.statement.executeQuery("select * from employee  where empid='"+choiceempid.getSelectedItem()+"'");
             while (rs.next()){
-//                textname.setText(rs.getString("name"));
-//                textemail.setText(rs.getString("email"));
-//                textphone.setText(rs.getString("phone"));
+                textName.setText(rs.getString("name"));
+                textEmail.setText(rs.getString("email"));
+                textPhone.setText(rs.getString("phone"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        choiceempid.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                try{
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        });
 
 
         setSize(1000,500);

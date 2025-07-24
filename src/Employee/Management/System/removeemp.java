@@ -15,12 +15,14 @@ public class removeemp extends JFrame implements ActionListener {
 
     removeemp(){
         JLabel lable= new JLabel("Employee ID");
-        lable.setBounds(50,50,150,30);
-        lable.setFont(new Font("Tahoma",Font.BOLD,20));
+        lable.setBounds(50,45,100,30);
+        lable.setFont(new Font("Tahoma",Font.BOLD,15));
         add(lable);
+
         choiceempid=new Choice();
         choiceempid.setBounds(250,50,150,30);
         add(choiceempid);
+
         try {
             connection c= new connection();
             String query="select * from employee";
@@ -32,12 +34,52 @@ public class removeemp extends JFrame implements ActionListener {
             e.printStackTrace();
         }
 
+        JLabel labelName = new JLabel("Name");
+        labelName.setBounds(50,100,100,30);
+        labelName.setFont(new Font("Tahoma", Font.BOLD,15));
+        add(labelName);
+
+        JLabel textName = new JLabel();
+        textName.setBounds(200,100,100,30);
+        add(textName);
 
 
-        setSize(1000,300);
+        JLabel labelPhone = new JLabel("Phone");
+        labelPhone.setBounds(50,150,100,30);
+        labelPhone.setFont(new Font("Tahoma", Font.BOLD,15));
+        add(labelPhone);
+
+        JLabel textPhone = new JLabel();
+        textPhone.setBounds(200,150,100,30);
+        add(textPhone);
+
+        JLabel labelemail = new JLabel("Email");
+        labelemail.setBounds(50,200,100,30);
+        labelemail.setFont(new Font("Tahoma", Font.BOLD,15));
+        add(labelemail);
+
+        JLabel textEmail = new JLabel();
+        textEmail.setBounds(200,200,100,30);
+        add(textEmail);
+
+        try {
+            connection c= new connection();
+            ResultSet rs=c.statement.executeQuery("select * from employee  where empid='"+choiceempid.getSelectedItem()+"'");
+            while (rs.next()){
+//                textname.setText(rs.getString("name"));
+//                textemail.setText(rs.getString("email"));
+//                textphone.setText(rs.getString("phone"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        setSize(1000,500);
         setLocation(300,150);
-        setVisible(true);
+
         setLayout(null);
+        setVisible(true);
 
     }
 

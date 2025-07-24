@@ -114,7 +114,7 @@ public class viewemply  extends JFrame implements ActionListener {
                  setVisible(false);
 
              } catch (Exception ex) {
-                 throw new RuntimeException(ex);
+                 ex.printStackTrace();
              }
         }
         else {

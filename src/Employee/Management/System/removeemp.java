@@ -80,6 +80,13 @@ public class removeemp extends JFrame implements ActionListener {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 try{
+                    connection c= new connection();
+                    ResultSet rs=c.statement.executeQuery("select * from employee  where empid='"+choiceempid.getSelectedItem()+"'");
+                    while (rs.next()) {
+                        textName.setText(rs.getString("name"));
+                        textEmail.setText(rs.getString("email"));
+                        textPhone.setText(rs.getString("phone"));
+                    }
 
                 } catch (Exception ex) {
                     ex.printStackTrace();

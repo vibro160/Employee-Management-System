@@ -57,7 +57,7 @@ public class main extends JFrame {
         remove .addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+            new removeemp();
             }
         });
 
@@ -72,6 +72,8 @@ public class main extends JFrame {
     }
 
     public static void main(String[] args) {
-     new main();
+        new main();
     }
+
+
 }

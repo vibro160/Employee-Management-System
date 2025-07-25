@@ -7,11 +7,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class removeemp extends JFrame implements ActionListener {
     Choice choiceempid;
 
-
+    JButton delete;
+    JButton back;
 
 
 
@@ -95,6 +97,38 @@ public class removeemp extends JFrame implements ActionListener {
             }
         });
 
+        delete= new JButton("Delete");
+        delete.setBounds(80,300,100,30);
+        delete.setBackground(Color.black);
+        delete.setForeground(Color.white);
+        delete.addActionListener(this);
+        add(delete);
+
+
+        back= new JButton("Back");
+        back.setBounds(200,300,100,30);
+        back.setBackground(Color.black);
+        back.setForeground(Color.white);
+        back.addActionListener(this);
+        add(back);
+
+        ImageIcon I1;
+        I1 = new ImageIcon(ClassLoader.getSystemResource("icons/delete.png"));
+        Image I2=I1.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT);
+        ImageIcon I3=new ImageIcon(I2);
+        JLabel img=new JLabel(I3);
+       img.setBounds(700,80,200,200);
+       add(img);
+
+        ImageIcon I11;
+        I11 = new ImageIcon(ClassLoader.getSystemResource("icons/rback.png"));
+        Image I22=I11.getImage().getScaledInstance(1120,630,Image.SCALE_DEFAULT);
+        ImageIcon I33=new ImageIcon(I22);
+        JLabel imgage=new JLabel(I33);
+        imgage.setBounds(0,0,1120,630);
+        add(imgage);
+
+
 
         setSize(1000,500);
         setLocation(300,150);
@@ -106,6 +140,22 @@ public class removeemp extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==delete){
+            try{
+                connection c=new connection();
+                String query="delete from employee where empid='"+choiceempid.getSelectedItem()+"'";
+                c.statement.executeUpdate(query);
+               JOptionPane.showMessageDialog(null,"Data Deleted Sucessfully");
+               setVisible(false);
+               new main();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+        }else {
+            setVisible(false);
+
+        }
 
     }
 
